@@ -14,14 +14,12 @@ class CountryProvider {
   ///  * If [countries] is not empty it returns a filtered list containing
   ///    counties as specified.
   static List<Country> getCountriesData({required List<String>? countries}) {
-    List jsonList = Countries.countryList;
+    final jsonList = Countries.countryList;
 
     if (countries == null || countries.isEmpty) {
       return jsonList.map((country) => Country.fromJson(country)).toList();
     }
-    List filteredList = jsonList.where((country) {
-      return countries.contains(country[PropertyName]);
-    }).toList();
+    final filteredList = jsonList.where((country) => countries.contains(country[PropertyName])).toList();
 
     return filteredList.map((country) => Country.fromJson(country)).toList();
   }
